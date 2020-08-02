@@ -6,6 +6,7 @@ class Node:
     def get_value(self):
         return self.value
 
+
     def get_next(self):
         return self.next_node
 
@@ -23,6 +24,7 @@ class LinkedList:
             node.set_next(self.head)
 
         self.head = node
+        return node
 
     def contains(self, value):
         if not self.head:
@@ -39,4 +41,26 @@ class LinkedList:
         return False
 
     def reverse_list(self, node, prev):
-        pass
+        if not self.head:
+            return False
+        
+        current = self.head
+
+        list_reversed = LinkedList()
+        while current:
+            list_reversed.add_to_head(current.value)
+            current = current.get_next()
+        
+        self.head = list_reversed.head
+        return list_reversed
+
+classo = LinkedList()
+
+classo.add_to_head(9001)
+classo.add_to_head(8)
+classo.add_to_head(564)
+classo.add_to_head(42)
+
+print(classo.head.value)
+classo.reverse_list(classo.head, None)
+print(classo.head.value)
