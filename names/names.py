@@ -13,10 +13,11 @@ f.close()
 duplicates = []  # Return the list of duplicates in this data structure
 
 # Replace the nested for loops below with your improvements
-for name_1 in names_1:
-    for name_2 in names_2:
-        if name_1 == name_2:
-            duplicates.append(name_1)
+set_my_pants = set(names_1)
+
+for i, name_2 in enumerate(names_2):
+    if name_2 in set_my_pants:
+        duplicates.append(name_2)
 
 end_time = time.time()
 print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
@@ -26,3 +27,9 @@ print (f"runtime: {end_time - start_time} seconds")
 # Python has built-in tools that allow for a very efficient approach to this problem
 # What's the best time you can accomplish?  Thare are no restrictions on techniques or data
 # structures, but you may not import any additional libraries that you did not write yourself.
+
+
+# With my toaster of a laptop, my initial runtime was 7.19244384765625 seconds.
+# I figured using sets would be more efficient because it would be easy to cross 
+# reference items in a list with items in a set.
+#RESULTS: runtime: 0.009006261825561523 seconds -- A SIGNIFICANT IMPROVEMENT!!!!
